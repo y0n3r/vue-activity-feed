@@ -2,7 +2,6 @@
 
 ## Project setup
 ```
-# todo: add husky
 yarn install
 ```
 
