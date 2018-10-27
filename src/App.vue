@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Filters from '@/components/Filters.vue';
+import Filters from "@/components/Filters.vue";
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
 
 
 <style lang="scss">
-@import '@/assets/scss/global.scss';
+@import "@/assets/scss/global.scss";
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
