@@ -9,11 +9,24 @@
 </template>
 
 <script>
-import Filters from "@/components/Filters.vue";
+import Filters from '@/components/Filters.vue';
 
 export default {
   components: {
     Filters
+  },
+  created() {
+    this.updateActiveFilter();
+  },
+  watch: {
+    $route: 'updateActiveFilter'
+  },
+  methods: {
+    updateActiveFilter() {
+      this.$store.commit('setActiveFilter', {
+        filter: this.$route.name.toUpperCase()
+      })
+    }
   }
 };
 </script>
