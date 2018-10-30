@@ -1,5 +1,12 @@
 export default {
-  API: {
-    BASE: 'https://api.geniuskitchen.com/external/v1/feed'
+  BASE: 'https://api.geniuskitchen.com/external/v1/feed',
+  URI: {
+    ACTIVITY: '/activity',
+    RECIPES: '/recipes',
+    PHOTOS: '/photos',
+    REVIEWS: '/reviews',
+    TWEAKS: '/tweaks',
+    QUESTIONS: '/questions',
+    FOLLOWS: '/follows'
   }
 };
