@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    activeFilter: ''
+    activeFilter: '',
+    page: 1
   },
   mutations: {
     setActiveFilter(state, payload) {

@@ -8,27 +8,50 @@
 import Loading from '@/components/Loading';
 import API from '@/constants/api';
 import http from '@/api';
+import { mapState } from 'vuex';
 
 export default {
   name: 'feed',
+  components: {
+    Loading
+  },
   data() {
     return {
       items: []
     }
   },
-  components: {
-    Loading
+  computed: {
+    ...mapState([
+      'activeFilter',
+      'page'
+    ])
   },
   created() {
     this.fetchItems();
   },
   methods: {
-    fetchItems() {
+    clearFeed() {
+      this.items = [];
+    },
+    async fetchItems() {
+      let response = await http({
+        url: API[this.activeFilter],
+        params: {
+          pn: this.page,
+          size: 20
+        }
+      });
 
+      response.data.data.items.forEach((item) => {
+        this.items.push(item);
+      })
     }
   },
-  computed: {
-    
+  watch: {
+    $route() {
+      this.clearFeed();
+      this.fetchItems();
+    }
   }
 };
 </script>
