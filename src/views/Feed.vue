@@ -1,10 +1,12 @@
 <template>
   <div class="feed">
     <loading v-if="items.length === 0"/>
+    <feed-item/>
   </div>
 </template>
 
 <script>
+import FeedItem from '@/components/FeedItem';
 import Loading from '@/components/Loading';
 import API from '@/constants/api';
 import http from '@/api';
@@ -13,12 +15,13 @@ import { mapState } from 'vuex';
 export default {
   name: 'feed',
   components: {
+    FeedItem,
     Loading
   },
   data() {
     return {
       items: []
-    }
+    };
   },
   computed: {
     ...mapState([
@@ -42,9 +45,9 @@ export default {
         }
       });
 
-      response.data.data.items.forEach((item) => {
+      response.data.data.items.forEach(item => {
         this.items.push(item);
-      })
+      });
     }
   },
   watch: {
