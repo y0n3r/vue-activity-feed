@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      redirect: '/activity',
+      redirect: '/activity'
     },
     {
       path: '/activity',

@@ -19,11 +19,13 @@ export default {};
 
 <style lang="scss">
 .filters {
+  margin-bottom: 20px;
+  
   &__filters {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
     &__filter {
-      margin-right: 10px;
     }
   }
 }

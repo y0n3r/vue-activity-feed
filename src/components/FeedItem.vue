@@ -43,15 +43,41 @@ export default {
 
 <style lang="scss">
 .feed-item {
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-gap: 10px;
+
+  &__info {
+    display: grid;
+    grid-template-columns: 40px auto;
+    grid-gap: 10px;
+  }
+
   &__icon {
     img {
       width: 40px;
     }
   }
 
+  &__title {
+    font-size: 14px;
+  }
+
   &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+
     img {
       width: 40px;
+    }
+  }
+
+  &__star-rating {
+    img {
+      width: 15px;
+      margin-right: 3px;
     }
   }
 }

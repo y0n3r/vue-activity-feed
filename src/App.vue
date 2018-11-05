@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>GK Activity Feed</h1>
+    <h1 class="app-title">GK Activity Feed</h1>
     <div class="app-container">
       <Filters/>
       <router-view/>
@@ -34,6 +34,14 @@ export default {
 
 <style lang="scss">
 @import "@/assets/scss/global.scss";
+
+.app-title {
+  text-align: center;
+}
+
+.app-container {
+  padding: 10px;
+}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
