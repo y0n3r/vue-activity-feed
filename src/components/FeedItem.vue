@@ -11,10 +11,10 @@
         <h3 class="feed-item__title">
           <a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a href="#">Pork Chops and Potatoes</a>
         </h3>
+        <h4 class="feed-item__timestamp">
+          12 minutes ago
+        </h4>
       </div>
-      <h4 class="feed-item__timestamp">
-        12 minutes ago
-      </h4>
       <div class="feed-item__star-rating">
         <img src="../assets/icons/star.svg">
         <img src="../assets/icons/star.svg">
@@ -80,7 +80,8 @@ export default {
   &__info {
     display: grid;
     grid-template-columns: 40px auto;
-    grid-gap: 10px;
+    grid-column-gap: 10px;
+    margin-bottom: 10px;
   }
 
   &__icon {
@@ -110,9 +111,9 @@ export default {
   }
 
   &__timestamp {
-    margin-bottom: 10px;
-    padding-left: 50px;
     font-size: 12px;
+    grid-column-start: 2;
+    grid-column-end: 3;
   }
 
   &__star-rating {
