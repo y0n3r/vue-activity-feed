@@ -1,15 +1,15 @@
 <template>
   <div class="feed-item">
     <div class="feed-item__icon">
-      <img src="../assets/icons/review.svg"/>
+      <img :src="feedItemIcon"/>
     </div>
     <div class="feed-item__content">
       <div class="feed-item__info">
         <div class="feed-item__avatar">
-          <img src="https://pbs.twimg.com/profile_images/588728470622117889/EWST87ln_bigger.jpg" alt="yoner">
+          <img :src="memberAvatar" :alt="memberName">
         </div>
         <h3 class="feed-item__title">
-          <a href="#">yoner5k</a> reviewed <a href="#">Pork Chops and Potatoes</a>
+          <a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a href="#">Pork Chops and Potatoes</a>
         </h3>
       </div>
       <h4 class="feed-item__timestamp">
@@ -38,7 +38,33 @@
 
 <script>
 export default {
-
+  props: {
+    type: String,
+    memberAvatar: String,
+    memberName: String,
+    memberProfileUrl: String
+  },
+  computed: {
+    action() {
+      switch(this.type) {
+        case 'creation':
+          return 'added recipe';
+        case 'follow':
+          return 'followed';
+        case 'review':
+          return 'reviewed';
+        case 'photo':
+          return 'added a photo to';
+        case 'question':
+          return 'asked a question about';
+        case 'tweak':
+          return 'tweaked';
+      }
+    },
+    feedItemIcon() {
+      return `../assets/icons/${this.type}.svg`;
+    }
+  }
 }
 </script>
 

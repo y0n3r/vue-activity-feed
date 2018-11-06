@@ -4,6 +4,10 @@
     <feed-item
       v-for="item in items"
       :key="item.id"
+      :type="item.type"
+      :member-avatar="item.memberAvatar"
+      :member-name="item.memberName"
+      :member-profile-url="item.memberProfileUrl"
     />
   </div>
 </template>
