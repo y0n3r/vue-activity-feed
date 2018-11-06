@@ -11,10 +11,10 @@
         <h3 class="feed-item__title">
           <a href="#">yoner5k</a> reviewed <a href="#">Pork Chops and Potatoes</a>
         </h3>
-        <h4 class="feed-item__timestamp">
-          12 minutes ago
-        </h4>
       </div>
+      <h4 class="feed-item__timestamp">
+        12 minutes ago
+      </h4>
       <div class="feed-item__star-rating">
         <img src="../assets/icons/star.svg">
         <img src="../assets/icons/star.svg">
@@ -25,6 +25,7 @@
       <div class="feed-item__text">
         <p>Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id. Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id. Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id.</p>
       </div>
+      <img class="feed-item__image" src="https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_294,w_392/v1/img/feed/2886/gDs2ai4MQSGtj6haJXHj_20181105_215433.jpg">
       <div class="feed-item__action-links">
         <ul>
           <li><a href="#">Like</a></li>
@@ -59,10 +60,6 @@ export default {
     }
   }
 
-  &__title {
-    font-size: 14px;
-  }
-
   &__avatar {
     width: 40px;
     height: 40px;
@@ -74,10 +71,38 @@ export default {
     }
   }
 
+  &__title {
+    font-size: 14px;
+  }
+
+  &__timestamp {
+    margin-bottom: 10px;
+    padding-left: 50px;
+    font-size: 12px;
+  }
+
   &__star-rating {
     img {
       width: 15px;
       margin-right: 3px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text {
+    p {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+  
+  &__action-links {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
