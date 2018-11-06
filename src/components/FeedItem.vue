@@ -28,8 +28,8 @@
       <img class="feed-item__image" src="https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_294,w_392/v1/img/feed/2886/gDs2ai4MQSGtj6haJXHj_20181105_215433.jpg">
       <div class="feed-item__action-links">
         <ul>
-          <li><a href="#">Like</a></li>
-          <li><a href="#">Reply</a></li>
+          <li><a href="#"><img src="../assets/icons/like.svg">Like (5)</a></li>
+          <li><a href="#"><img src="../assets/icons/reply.svg">Reply</a></li>
         </ul>
       </div>
     </div>
@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/import-all.scss';
+
 .feed-item {
   display: grid;
   grid-template-columns: 40px auto;
@@ -103,6 +105,14 @@ export default {
     ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    img {
+      fill: $vue-green;
+      margin-right: 5px;
+      position: relative;
+      top: 1px;
+      width: 15px;
     }
   }
 }

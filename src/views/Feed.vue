@@ -1,7 +1,10 @@
 <template>
   <div class="feed">
     <loading v-if="items.length === 0"/>
-    <feed-item/>
+    <feed-item
+      v-for="item in items"
+      :key="item.id"
+    />
   </div>
 </template>
 
