@@ -49,6 +49,7 @@ export default {
   display: grid;
   grid-template-columns: 40px auto;
   grid-gap: 10px;
+  margin-bottom: 20px;
 
   &__info {
     display: grid;
@@ -60,6 +61,11 @@ export default {
     img {
       width: 40px;
     }
+  }
+
+  &__content {
+    border-bottom: 1px dashed gray;
+    padding-bottom: 20px;
   }
 
   &__avatar {
@@ -98,6 +104,7 @@ export default {
   }
 
   &__image {
+    margin-bottom: 10px;
     width: 100%;
   }
   
