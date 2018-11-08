@@ -4,10 +4,15 @@
     <feed-item
       v-for="item in items"
       :key="item.id"
-      :type="item.type"
+      :item-text="item.text"
       :member-avatar="item.memberAvatar"
       :member-name="item.memberName"
       :member-profile-url="item.memberProfileUrl"
+      :rating="item.rating"
+      :recipe-title="item.recipeTitle"
+      :recipe-url="item.recipeUrl"
+      :timestamp="item.submitted"
+      :type="item.type"
     />
   </div>
 </template>

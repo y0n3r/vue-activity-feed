@@ -8,22 +8,18 @@
         <div class="feed-item__avatar">
           <img :src="memberAvatar" :alt="memberName">
         </div>
-        <h3 class="feed-item__title">
-          <a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a href="#">Pork Chops and Potatoes</a>
-        </h3>
-        <h4 class="feed-item__timestamp">
-          12 minutes ago
-        </h4>
+        <h3 class="feed-item__title"><a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a :href="recipeUrl" v-html="recipeTitle"></a></h3>
+        <h4 class="feed-item__timestamp">{{ timestamp }}</h4>
       </div>
-      <div class="feed-item__star-rating">
-        <img src="../assets/icons/star.svg">
-        <img src="../assets/icons/star.svg">
-        <img src="../assets/icons/star.svg">
-        <img src="../assets/icons/star.svg">
-        <img src="../assets/icons/star.svg">
+      <div 
+        class="feed-item__star-rating"
+        v-if="this.isReview">
+        <img v-for="n in rating" src="../assets/icons/star.svg">
       </div>
-      <div class="feed-item__text">
-        <p>Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id. Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id. Nisi aliqua sunt exercitation dolore duis nulla. Ad laborum do ut cupidatat dolor sit enim excepteur. Ipsum qui in enim aliquip id.</p>
+      <div 
+        class="feed-item__text"
+        v-if="hasText">
+        <p>{{ itemText }}</p>
       </div>
       <img class="feed-item__image" src="https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_294,w_392/v1/img/feed/2886/gDs2ai4MQSGtj6haJXHj_20181105_215433.jpg">
       <div class="feed-item__action-links">
@@ -39,10 +35,15 @@
 <script>
 export default {
   props: {
-    type: String,
+    itemText: String,
     memberAvatar: String,
     memberName: String,
-    memberProfileUrl: String
+    memberProfileUrl: String,
+    rating: Number,
+    recipeTitle: String,
+    recipeUrl: String,
+    timestamp: String,
+    type: String
   },
   computed: {
     action() {
@@ -63,6 +64,12 @@ export default {
     },
     feedItemIcon() {
       return `../assets/icons/${this.type}.svg`;
+    },
+    hasText() {
+      return typeof this.itemText !== 'undefined';
+    },
+    isReview() {
+      return this.type === 'review';
     }
   }
 }
