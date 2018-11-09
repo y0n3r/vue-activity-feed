@@ -31,8 +31,8 @@
         v-if="type !== 'follow'" 
         class="feed-item__action-links">
         <ul>
-          <li><a href="#"><img src="../assets/icons/like.svg">Like (5)</a></li>
-          <li><a href="#"><img src="../assets/icons/reply.svg">Reply</a></li>
+          <li><a href="#" class="feed-item__action-links__like"><img src="../assets/icons/like.svg">Like <span v-if="counts && counts.like > 0">({{ counts.like }})</span></a></li>
+          <li><a href="#" class="feed-item__action-links__reply"><img src="../assets/icons/reply.svg">Reply</a></li>
         </ul>
       </div>
     </div>
@@ -42,6 +42,7 @@
 <script>
 export default {
   props: {
+    counts: Object,
     followedName: String,
     followedProfileUrl: String,
     itemText: String,

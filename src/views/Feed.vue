@@ -4,6 +4,7 @@
     <feed-item
       v-for="item in items"
       :key="item.id"
+      :counts="item.counts"
       :followed-name="item.followedName"
       :followed-profile-url="item.followedProfileUrl"
       :item-text="item.text"
