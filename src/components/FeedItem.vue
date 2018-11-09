@@ -8,8 +8,10 @@
         <div class="feed-item__avatar">
           <img :src="memberAvatar" :alt="memberName">
         </div>
-        <h3 class="feed-item__title"><a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a v-if="type !== 'follow'" :href="recipeUrl" v-html="recipeTitle"></a><a v-else :href="followedProfileUrl">{{ followedName }}</a></h3>
-        <h4 class="feed-item__timestamp">{{ timestamp }}</h4>
+        <div>
+          <h3 class="feed-item__title"><a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a v-if="type !== 'follow'" :href="recipeUrl" v-html="recipeTitle"></a><a v-else :href="followedProfileUrl">{{ followedName }}</a></h3>
+          <h4 class="feed-item__timestamp">{{ timestamp }}</h4>
+        </div>
       </div>
       <div 
         class="feed-item__star-rating"
@@ -136,8 +138,6 @@ export default {
 
   &__timestamp {
     font-size: 12px;
-    grid-column-start: 2;
-    grid-column-end: 3;
   }
 
   &__star-rating {
