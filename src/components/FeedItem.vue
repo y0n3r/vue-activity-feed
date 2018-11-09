@@ -21,7 +21,10 @@
         v-if="hasText">
         <p>{{ itemText }}</p>
       </div>
-      <img class="feed-item__image" src="https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_294,w_392/v1/img/feed/2886/gDs2ai4MQSGtj6haJXHj_20181105_215433.jpg">
+      <img
+        v-if="hasPhoto" 
+        class="feed-item__image"
+        :src="photoUrl">
       <div class="feed-item__action-links">
         <ul>
           <li><a href="#"><img src="../assets/icons/like.svg">Like (5)</a></li>
@@ -39,11 +42,13 @@ export default {
     memberAvatar: String,
     memberName: String,
     memberProfileUrl: String,
+    photo: String,
     rating: Number,
     recipeTitle: String,
     recipeUrl: String,
     timestamp: String,
-    type: String
+    type: String,
+    url: String
   },
   computed: {
     action() {
@@ -65,11 +70,21 @@ export default {
     feedItemIcon() {
       return `../assets/icons/${this.type}.svg`;
     },
+    hasPhoto() {
+      return typeof this.photo !== 'undefined' || this.type === 'photo';
+    },
     hasText() {
       return typeof this.itemText !== 'undefined';
     },
     isReview() {
       return this.type === 'review';
+    },
+    photoUrl() {
+      if (this.type === 'photo') {
+        return this.url;
+      } else {
+        return this.photo;
+      }
     }
   }
 }

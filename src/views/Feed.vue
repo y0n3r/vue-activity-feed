@@ -8,11 +8,13 @@
       :member-avatar="item.memberAvatar"
       :member-name="item.memberName"
       :member-profile-url="item.memberProfileUrl"
+      :photo="item.photo"
       :rating="item.rating"
       :recipe-title="item.recipeTitle"
       :recipe-url="item.recipeUrl"
       :timestamp="item.submitted"
       :type="item.type"
+      :url="item.url"
     />
   </div>
 </template>
