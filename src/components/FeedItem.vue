@@ -8,7 +8,7 @@
         <div class="feed-item__avatar">
           <img :src="memberAvatar" :alt="memberName">
         </div>
-        <h3 class="feed-item__title"><a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a :href="recipeUrl" v-html="recipeTitle"></a></h3>
+        <h3 class="feed-item__title"><a :href="memberProfileUrl">{{ memberName }}</a> {{ action }} <a v-if="type !== 'follow'" :href="recipeUrl" v-html="recipeTitle"></a><a v-else :href="followedProfileUrl">{{ followedName }}</a></h3>
         <h4 class="feed-item__timestamp">{{ timestamp }}</h4>
       </div>
       <div 
@@ -38,6 +38,8 @@
 <script>
 export default {
   props: {
+    followedName: String,
+    followedProfileUrl: String,
     itemText: String,
     memberAvatar: String,
     memberName: String,
