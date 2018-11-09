@@ -27,7 +27,9 @@
         v-if="hasPhoto" 
         class="feed-item__image"
         :src="photoUrl">
-      <div class="feed-item__action-links">
+      <div
+        v-if="type !== 'follow'" 
+        class="feed-item__action-links">
         <ul>
           <li><a href="#"><img src="../assets/icons/like.svg">Like (5)</a></li>
           <li><a href="#"><img src="../assets/icons/reply.svg">Reply</a></li>
