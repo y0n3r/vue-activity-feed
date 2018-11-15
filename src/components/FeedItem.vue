@@ -75,7 +75,7 @@ export default {
       }
     },
     feedItemIcon() {
-      return `../assets/icons/${this.type}.svg`;
+      return require(`../assets/icons/${this.type}.svg`);
     },
     hasPhoto() {
       return typeof this.photo !== 'undefined' || this.type === 'photo';
