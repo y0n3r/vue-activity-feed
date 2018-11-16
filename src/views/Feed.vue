@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <loading v-if="items.length === 0"/>
+    <loading v-if="loading"/>
     <feed-item
       v-for="item in items"
       :key="item.id"
@@ -20,7 +20,7 @@
       :url="item.url"
     />
     <div 
-      v-if="error" 
+      v-if="error"
       class="feed__error-message">
       <h2 class="feed__error-message__title">Uh Oh!</h2>
       <p>There appears to have been an error.</p>
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       error: false,
+      loading: true,
       items: []
     };
   },
@@ -65,6 +66,8 @@ export default {
       }
     },
     async fetchItems() {
+      this.loading = true;
+      
       try {
         let response = await http({
           url: API.URI[this.activeFilter],
@@ -81,6 +84,8 @@ export default {
         this.error = true;
         log.error(`Something went wrong! ${error}`);
       }
+
+      this.loading = false;
     }
   },
   watch: {
