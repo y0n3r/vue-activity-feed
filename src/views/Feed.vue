@@ -1,6 +1,5 @@
 <template>
   <div class="feed">
-    <loading v-if="loading"/>
     <feed-item
       v-for="item in items"
       :key="item.id"
@@ -19,6 +18,12 @@
       :type="item.type"
       :url="item.url"
     />
+    <loading v-if="loading"/>
+    <gk-button
+      v-if="showLoadMore" 
+      text="Load More"
+      @onClick="fetchItems"
+    />
     <div 
       v-if="error"
       class="feed__error-message">
@@ -30,16 +35,18 @@
 
 <script>
 import FeedItem from '@/components/FeedItem';
+import GkButton from '@/components/GkButton';
 import Loading from '@/components/Loading';
 import API from '@/constants/api';
 import http from '@/api';
 import * as log from 'loglevel';
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'feed',
   components: {
     FeedItem,
+    GkButton,
     Loading
   },
   data() {
@@ -52,13 +59,22 @@ export default {
   computed: {
     ...mapState([
       'activeFilter',
-      'page'
-    ])
+      'page',
+      'results'
+    ]),
+    showLoadMore() {
+      return this.items.length < this.results && !this.loading;
+    }
   },
   created() {
     this.fetchItems();
   },
   methods: {
+    ...mapMutations([
+      'incrementPage',
+      'resetPage',
+      'updateResults'
+    ]),
     clearFeed() {
       this.items = [];
       if (this.error) {
@@ -67,7 +83,7 @@ export default {
     },
     async fetchItems() {
       this.loading = true;
-      
+
       try {
         let response = await http({
           url: API.URI[this.activeFilter],
@@ -80,6 +96,12 @@ export default {
         response.data.data.items.forEach(item => {
           this.items.push(item);
         });
+
+        this.incrementPage();
+
+        this.updateResults({
+          results: response.data.total
+        });
       } catch (error) {
         this.error = true;
         log.error(`Something went wrong! ${error}`);
@@ -91,6 +113,7 @@ export default {
   watch: {
     $route() {
       this.clearFeed();
+      this.resetPage();
       this.fetchItems();
     }
   }
