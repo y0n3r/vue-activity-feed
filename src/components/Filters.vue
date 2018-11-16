@@ -19,11 +19,14 @@ export default {};
 
 <style lang="scss">
 .filters {
+  border-bottom: 1px dashed gray;
   margin-bottom: 20px;
+  padding-bottom: 10px;
   
   &__filters {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 
     &__filter {
     }

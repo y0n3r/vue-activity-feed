@@ -101,10 +101,14 @@ export default {
 @import '../assets/scss/import-all.scss';
 
 .feed-item {
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
   display: grid;
   grid-template-columns: 40px auto;
   grid-gap: 10px;
   margin-bottom: 20px;
+  padding: 10px;
 
   &__info {
     display: grid;
@@ -120,7 +124,6 @@ export default {
   }
 
   &__content {
-    border-bottom: 1px dashed gray;
     padding-bottom: 20px;
   }
 
