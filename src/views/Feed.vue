@@ -33,6 +33,7 @@ import FeedItem from '@/components/FeedItem';
 import Loading from '@/components/Loading';
 import API from '@/constants/api';
 import http from '@/api';
+import * as log from 'loglevel';
 import { mapState } from 'vuex';
 
 export default {
@@ -78,7 +79,7 @@ export default {
         });
       } catch (error) {
         this.error = true;
-        console.log(`Something went wrong! ${error}`);
+        log.error(`Something went wrong! ${error}`);
       }
     }
   },
