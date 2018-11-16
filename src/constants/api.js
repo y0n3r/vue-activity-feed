@@ -1,7 +1,7 @@
 export default {
   BASE: 'https://api.geniuskitchen.com/external/v1/feed',
   URI: {
-    ACTIVITY: '/activity',
+    ACTIVITY: '',
     RECIPES: '/recipes',
     PHOTOS: '/photos',
     REVIEWS: '/reviews',
