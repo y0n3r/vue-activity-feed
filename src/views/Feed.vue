@@ -19,6 +19,12 @@
       :type="item.type"
       :url="item.url"
     />
+    <div 
+      v-if="error" 
+      class="feed__error-message">
+      <h2 class="feed__error-message__title">Uh Oh!</h2>
+      <p>There appears to have been an error.</p>
+    </div>
   </div>
 </template>
 
@@ -37,6 +43,7 @@ export default {
   },
   data() {
     return {
+      error: false,
       items: []
     };
   },
@@ -52,19 +59,27 @@ export default {
   methods: {
     clearFeed() {
       this.items = [];
+      if (this.error) {
+        this.error = false;
+      }
     },
     async fetchItems() {
-      let response = await http({
-        url: API[this.activeFilter],
-        params: {
-          pn: this.page,
-          size: 20
-        }
-      });
+      try {
+        let response = await http({
+          url: API.URI[this.activeFilter],
+          params: {
+            pn: this.page,
+            size: 20
+          }
+        });
 
-      response.data.data.items.forEach(item => {
-        this.items.push(item);
-      });
+        response.data.data.items.forEach(item => {
+          this.items.push(item);
+        });
+      } catch (error) {
+        this.error = true;
+        console.log(`Something went wrong! ${error}`);
+      }
     }
   },
   watch: {
