@@ -119,3 +119,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.feed {
+  margin: 0 auto;
+  max-width: 600px;
+}
+</style>
+
