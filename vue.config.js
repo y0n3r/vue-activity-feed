@@ -2,7 +2,7 @@ module.exports = {
   pluginOptions: {
     s3Deploy: {
       registry: undefined,
-      awsProfile: 'default',
+      awsProfile: 'vue-activity-feed',
       region: 'us-east-1',
       bucket: 'vue-activity-feed',
       createBucket: false,
