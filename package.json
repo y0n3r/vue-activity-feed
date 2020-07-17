@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "loglevel": "^1.6.1",
     "vue": "^2.5.17",
     "vue-cli-plugin-s3-deploy": "^3.0.0",
